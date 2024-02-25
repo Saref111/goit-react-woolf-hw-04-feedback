@@ -1,15 +1,15 @@
 import React from 'react';
-import { makeFirstLetterUppercase } from '../../helpers/helpers';
+import { formatToNormalCase } from '../../helpers/helpers';
 
 import css from './Statistics.module.scss';
 
-const Statistics = ({ options, positivePercentage }) => {
+const Statistics = ({ options }) => {
   return (
     <ul className={css.list}>
       {options.map(([key, value]) => (
         <li key={key}>
           <label key={key} className={css.label}>
-            {makeFirstLetterUppercase(key)}: {value}
+            {formatToNormalCase(key)}: {value}
           </label>
         </li>
       ))}

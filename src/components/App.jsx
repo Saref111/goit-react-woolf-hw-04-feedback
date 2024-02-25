@@ -42,8 +42,8 @@ const App = () => {
           <Statistics
             options={Object.entries({
               ...state, 
-              total: totalCount, 
-              'Positive feedback': `${countPositiveFeedbackPercentage()} %`,
+              totalCount, 
+              positiveFeedback: `${countPositiveFeedbackPercentage()} %`,
             })}
           />
         ) : (
