@@ -24,13 +24,9 @@ const App = () => {
     }));
   };
 
-  const countTotalFeedback = () => {
-    return state.neutral + state.bad + state.good;
-  };
-
   const countPositiveFeedbackPercentage = () => {
     return state.good
-      ? countPercentage(countTotalFeedback(), state.good).toFixed(2)
+      ? countPercentage(totalCount, state.good).toFixed(2)
       : 0;
   };
   return (
@@ -44,8 +40,11 @@ const App = () => {
       <Section title="Statistics">
         {totalCount ? (
           <Statistics
-            options={state}
-            positivePercentage={countPositiveFeedbackPercentage()}
+            options={Object.entries({
+              ...state, 
+              total: totalCount, 
+              'Positive feedback': `${countPositiveFeedbackPercentage()} %`,
+            })}
           />
         ) : (
           <Notification message="No feedback given" className={css.label} />
